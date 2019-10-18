@@ -22,13 +22,14 @@ function CardDeck() {
     setSearch(event.target.value)
   }
 
-  const searchCharacter = character.filter(person => {
-    person.name() === (search.name);
-  });
+  // const searchCharacter = character.filter(person => {
+  //   person.name() === (search.name);
+  //   return(
+  //     <CharacterCard character={searchCharacter} />
+  //   )
+  // });
 
   return (
-    character.map((person) => {
-      return(
         <div className="cardDeck">
           <div className="search">
             <h3>Search Characters by Name</h3>
@@ -40,18 +41,21 @@ function CardDeck() {
               onChange={handleSearch}
               />
             </label>
+            <button>Search Characters</button>
           </div>
-          <CharacterCard 
-            key={person.id}
-            image={person.image}
-            name={person.name}
-            species={person.species}
-            origin={person.origin}
-            character={searchCharacter} />
-        </div>    
-      );
-    })
-  );
+          <div className="card">
+          {character.map(person => {
+            <CharacterCard 
+              key={person.id}
+              image={person.image}
+              name={person.name}
+              species={person.species}
+              origin={person.origin}
+              created={person.created} />
+          })}
+        </div>
+      </div>
+    );
 };
 
 export default CardDeck;
