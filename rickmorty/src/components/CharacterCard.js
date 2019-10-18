@@ -1,9 +1,13 @@
 import React from 'react';
 
-function Card() {
+function Card(props) {
   return(
-    <h1>Card</h1>
-  );
+    image={props.image}
+    name={props.name}
+    species={props.species}
+    origin={props.origin}
+    character={props.searchCharacter}
+    );
 }
 
 export default Card;
