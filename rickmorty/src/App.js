@@ -15,6 +15,7 @@ function App() {
 
   const searchCharacter = character.filter(person => {
     person.name() === (search.name);
+    
   });
 
   return (
