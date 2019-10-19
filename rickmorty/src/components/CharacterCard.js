@@ -1,17 +1,8 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 
-function CharacterCard(props) {
-  return (
-    <div className="card-content">
-      {props.character.map(person => (
-        <CharacterDetails key={person.id} person={person} />
-      ))}
-    </div>
-  );
-}
 
-function CharacterDetails(props) {
+function CharacterCard(props) {
   const { image, name, species, origin, created } = props.person;
   console.log(props.person);
   return(
