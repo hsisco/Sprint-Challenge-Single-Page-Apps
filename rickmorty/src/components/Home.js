@@ -1,9 +1,12 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import { Jumbotron, Container } from 'reactstrap';
-import CharacterList from './CharacterList';
-import SearchForm from './SearchForm';
+import CharactersPage from './CharactersPage';
+
 
 const Home = (props) => {
+  const characters = props.characters;
+
   return (
     <div className="home">
       <Jumbotron fluid>
@@ -12,10 +15,7 @@ const Home = (props) => {
         </Container>
       </Jumbotron>
 
-      <CharacterList>
-        <SearchForm />
-      
-      </CharacterList>
+        <Route render={(props) => <CharactersPage {...props} characters={characters} />} />
     </div>
   );
 };

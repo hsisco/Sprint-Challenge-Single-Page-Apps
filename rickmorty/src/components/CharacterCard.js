@@ -18,6 +18,7 @@ function CharacterCard(props) {
       </CardBody>
     </Card>
     </div>
+  
   );
 }
 
