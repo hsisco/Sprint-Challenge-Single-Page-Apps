@@ -9,12 +9,12 @@ function CharacterPage(props){
 
   return (
     <div className="character-page">
-      {characters.map(person => (
+      {characters && characters.map(person => (
         <CharacterCard key={person.id} person={person} />
       ))}
 
   <Route render={() => <SearchForm characters={characters} />} />
-  <Route render={(props) => <CharacterCard {...props} characters={characters} />} />
+  {/* <Route render={(props) => <CharacterCard {...props} characters={characters} />} /> */}
 
 </div>
   );

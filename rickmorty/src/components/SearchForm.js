@@ -23,7 +23,7 @@ const SearchForm = (props) => {
         <Input placeholder="Character Name"/>
       </InputGroup>
 
-      <CharacterCard search={searchCharacter} />
+      <CharacterCard person={searchCharacter} />
     </div>
   );
 };
