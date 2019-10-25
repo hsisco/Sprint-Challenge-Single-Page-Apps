@@ -1,31 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InputGroup, Button, InputGroupAddon, Input } from 'reactstrap';
 import CharacterCard from './CharacterCard';
 
 const SearchForm = (props) => {
-  const [search, setSearch] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
-  const character = props.characters || [];
-  const searchCharacter = character.filter(person => person.name === search.name);
+  const characters = props.characters || [];
 
-  const handleSearch = event => {
-    setSearch(event.target.value)
+  const searchCharacter = () => {
+    characters.filter(person => person.name === searchValue);
+  }
+
+  const handleSearchInputChanges = (e) => {
+    setSearchValue(e.target.value);
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(e);
+    // searchCharacter();
   }
 
   return (
     <div>
       <InputGroup>
         <InputGroupAddon addonType="prepend">
-          <Button value={search.name} onClick={handleSearch}>
+          <Input placeholder="Character Name" onChange={handleSearchInputChanges}/>
+          <Button type="submit" onClick={handleSearch}>
             Search
           </Button>
         </InputGroupAddon>
-        <Input placeholder="Character Name"/>
       </InputGroup>
-
-      <CharacterCard person={searchCharacter} />
+      {searchValue && searchCharacter() ? (
+        <CharacterCard key={searchCharacter().id} {...searchCharacter() } /> 
+       ) : (
+        <h2> No characters matched your search </h2>
+      )}
     </div>
   );
 };
 
 export default SearchForm;
+
+  // const defaultObject = {
+  //     "id": 1,
+  //     "name": "Rick Sanchez",
+  //     "status": "Alive",
+  //     "species": "Human",
+  //     "type": "",
+  //     "gender": "Male",
+  //     "origin": {
+  //       "name": "Earth (C-137)",
+  //       "url": "https://rickandmortyapi.com/api/location/1"
+  //     },
+  //     "location": {
+  //       "name": "Earth (Replacement Dimension)",
+  //       "url": "https://rickandmortyapi.com/api/location/20"
+  //     },
+  //     "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+  //     "url": "https://rickandmortyapi.com/api/character/1",
+  //     "created": "2017-11-04T18:48:46.250Z"
+  //   }
