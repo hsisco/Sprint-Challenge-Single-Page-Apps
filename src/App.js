@@ -1,11 +1,14 @@
-import React from "react";
-import Header from "./components/Header.js";
+import { Route } from 'react-router-dom';
+import React from 'react';
+import './App.css';
+import Home from './components/Home';
 
-
-export default function App() {
+function App() {
   return (
-    <main>
-      <Header />
-    </main>
+    <div className="App">
+      <Route path="/" render={() => <Home />}/>
+    </div>
   );
 }
+
+export default App;
