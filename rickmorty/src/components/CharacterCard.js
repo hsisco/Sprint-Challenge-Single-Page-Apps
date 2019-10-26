@@ -3,17 +3,16 @@ import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 
 
 function CharacterCard(props) {
-  const { image, name, species, origin, created } = props;
 
   return(
     <div>
     <Card>
-      <CardImg top width="20%" src={image} alt={`Image of ${name} from Rick and Morty.`} />
+      <CardImg top width="20%" src={props.image} alt={`Image of ${props.name} from Rick and Morty.`} />
       <CardBody>
-        <CardTitle>{name}</CardTitle>
-        <CardText>A {species} from {origin.name}.</CardText>
+        <CardTitle>{props.name}</CardTitle>
+        <CardText>A {props.species} from {props.origin.name}.</CardText>
         <CardText>
-          <small className="text-muted">Created: {created}</small>
+          <small className="text-muted">Created: {props.created}</small>
         </CardText>
       </CardBody>
     </Card>
