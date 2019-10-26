@@ -18,7 +18,7 @@ const Home = () => {
     .catch(error => {
       console.log("Character data was not returned. Sad.", error);
     });
-  }, [!characters]);
+  }, [characters]);
 
   return (
     <div className="home">

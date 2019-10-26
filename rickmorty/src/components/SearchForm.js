@@ -3,39 +3,49 @@ import { InputGroup, Button, InputGroupAddon, Input } from 'reactstrap';
 import CharacterCard from './CharacterCard';
 
 const SearchForm = (props) => {
+  const characters = props.characters;
+
   const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-  const characters = props.characters || [];
 
-  const searchCharacter = () => {
-    characters.filter(person => person.name === searchValue);
-  }
+  useEffect(() => {
 
-  const handleSearchInputChanges = (e) => {
+    const results = characters.filter(person => person.name === searchValue);
+    setSearchResults(results);
+  }, [searchValue]);
+
+  const handleInputChange = (e) => {
     setSearchValue(e.target.value);
   }
-
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(e);
-    // searchCharacter();
   }
 
   return (
     <div>
       <InputGroup>
         <InputGroupAddon addonType="prepend">
-          <Input placeholder="Character Name" onChange={handleSearchInputChanges}/>
-          <Button type="submit" onClick={handleSearch}>
+          <Input 
+          type="text" 
+          placeholder="Character Name"
+          value={searchValue}
+          onChange={handleInputChange}/>
+          <Button 
+          type="submit" 
+          onClick={handleSearch}
+          >
             Search
           </Button>
         </InputGroupAddon>
       </InputGroup>
-      {searchValue && searchCharacter() ? (
-        <CharacterCard key={searchCharacter().id} {...searchCharacter() } /> 
-       ) : (
-        <h2> No characters matched your search </h2>
-      )}
+    <div>
+      {searchResults.map(item => {
+        return (
+          <CharacterCard key={item.id}  />
+        )})}
+    </div>
     </div>
   );
 };
