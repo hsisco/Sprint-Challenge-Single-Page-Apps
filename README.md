@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: It’s a process where JavaScript handles routing internally, maintaining state within the application rather than making a full server request which then reloads the page. We can change the state displayed without having to reload, resulting in faster, lighter apps.
 
 ## Project Set Up
 
