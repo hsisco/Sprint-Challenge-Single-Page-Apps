@@ -13,9 +13,9 @@ export function SearchForm(props, { onSearch }) {
     e.preventDefault();
   }
 
-  let searchedCharacters = props.characters.filter(character => {
-    if (character.name.toLowerCase().includes(search.toLowerCase())){
-      return character;
+  let searchedCharacters = props.characters.filter(person => {
+    if (person.name.toLowerCase().includes(search.toLowerCase())){
+      return person;
     } else {
       return null;
     }})
