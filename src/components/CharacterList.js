@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function CharacterList() {
+export const CharacterList = () => {
   // TODO: Add useState to track data from useEffect
 
   useEffect(() => {
