@@ -4,11 +4,11 @@ import {Header} from "./components/Header.js";
 import {WelcomePage} from './components/WelcomePage';
 
 
-export const App = () => {
+export function App() {
   return (
     <main>
       <Header />
-      <Route path="/" render={() => <WelcomePage />}/>
+      <Route path="/" render={() => <WelcomePage />}/> 
     </main>
   );
 }
