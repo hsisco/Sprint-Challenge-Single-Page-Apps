@@ -1,5 +1,25 @@
-import React from "react";
+import React from 'react';
+import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
-export default function LocationCard({ name, type, dimension, residents }) {
-  return <span>todo: location</span>;
+
+function LocationCard(props) {
+  const { name, type, dimension, created } = props;
+
+  return(
+    <div>
+    <Card>
+      <CardBody>
+        <CardTitle>{name}</CardTitle>
+        <CardText>Dimension: {dimension}.</CardText>
+        <CardText>Type: {type}.</CardText>
+        <CardText>
+          <small className="text-muted">Created: {created}</small>
+        </CardText>
+      </CardBody>
+    </Card>
+    </div>
+  
+  );
 }
+
+export default LocationCard;

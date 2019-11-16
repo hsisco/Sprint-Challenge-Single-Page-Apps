@@ -1,3 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from 'react';
+import LocationCard from './LocationCard';
 
-export default function LocationsList() {}
+function LocationsList(props) {
+  const locations = props.locations || [];
+  return (
+    <div className="character-page">
+      {locations.map(location => (
+        <LocationCard key={location.id} {...location} />
+      ))}
+    </div>
+  );
+}
+
+export default LocationsList;
