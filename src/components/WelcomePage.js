@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import { Jumbotron, Container, Button, InputGroup, InputGroupAddon, Input } from 'reactstrap';
-import {CharacterList} from './CharacterList';
+import CharactersList from './CharactersList';
 import LocationsList from './LocationsList';
 
 export const WelcomePage= () => {
@@ -38,11 +38,6 @@ export const WelcomePage= () => {
       <Jumbotron fluid>
         <Container fluid>
           <h1>"What up my Glip Glops?!"</h1>
-          <Link to="/characters">
-            <Button>
-              <span>All Characters</span>
-            </Button>
-          </Link>
         </Container>
       </Jumbotron>
       </div>
@@ -68,7 +63,7 @@ export const WelcomePage= () => {
         <Link to="/characters">Here's Everybody</Link>
         <Link to="/locations">All the Places</Link>
 
-        <Route path="/characters" render={() => <CharacterList />}/> 
+        <Route path="/characters" render={() => <CharactersList />}/> 
         <Route path="/locations" render={() => <LocationsList />}/> 
 
       </header>

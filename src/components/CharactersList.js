@@ -1,7 +1,7 @@
 import React from 'react';
 import CharacterCard from './CharacterCard';
 
-function CharacterPage(props) {
+function CharactersList(props) {
   const characters = props.characters || [];
   return (
     <div className="character-page">
@@ -13,4 +13,4 @@ function CharacterPage(props) {
   );
 }
 
-export default CharacterPage;
+export default CharactersList;
