@@ -1,46 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { InputGroup, Button, InputGroupAddon, Input } from 'reactstrap';
+import React, { useState } from 'react';
 import CharacterCard from './CharacterCard';
 
-const SearchForm = (props) => {
-  const [searchValue, setSearchValue] = useState("");
+export function SearchForm(props) {
+  const characters = props.characters;
+  
+  const [query, setQuery] = useState({name: ""});
+  const results = characters.filter(person => person.name === query);
 
-  const characters = props.characters || [];
+  const handleInputChange = (e => {
+    setQuery(e.target.value)
+  });
 
-  const searchCharacter = () => {
-    characters.filter(person => person.name === searchValue);
-  }
-
-  const handleSearchInputChanges = (e) => {
-    setSearchValue(e.target.value);
-  }
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log(e);
-    // searchCharacter();
-  }
 
   return (
-    <div>
-      <InputGroup>
-        <InputGroupAddon addonType="prepend">
-          <Input placeholder="Character Name" onChange={handleSearchInputChanges}/>
-          <Button type="submit" onClick={handleSearch}>
-            Search
-          </Button>
-        </InputGroupAddon>
-      </InputGroup>
-      {searchValue && searchCharacter() ? (
-        <CharacterCard key={searchCharacter().id} {...searchCharacter() } /> 
-      ) : (
-        <h2> No characters matched your search </h2>
-      )}
-    </div>
+    <section className="search-form">
+      <form>
+        <input
+          onChange={handleInputChange}
+          placeholder="name"
+          value={query.name}
+          name="name"
+        />
+        <button type="submit">Search</button>
+      </form>
+      {results.map(i => {
+        return <CharacterCard key={i.id} name={i.name} status={i.status} />;
+      })}
+    </section>
   );
-};
-
-export default SearchForm;
+}
 
   // const defaultObject = {
   //     "id": 1,

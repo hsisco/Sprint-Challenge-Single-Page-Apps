@@ -2,29 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import { Jumbotron, Container, Button, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import {SearchForm} from './SearchForm';
 import CharactersList from './CharactersList';
 import LocationsList from './LocationsList';
 
-export const WelcomePage= () => {
+export const WelcomePage = () => {
   const [characters, setCharacters] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
 
   useEffect (() => {
     axios
     .get('https://rickandmortyapi.com/api/character/')
     .then(response => {
+      console.log(response.data.results)
       setCharacters(response.data.results);
-      const results = characters.filter(person => person.name.toLowerCase().includes(searchValue.toLowerCase()));
-      setCharacters(results);
-    }, [searchValue])
+    })
+    .catch(error => {
+      console.log("Character data was not returned. Sad.", error);
     });
+  }, []);
 
-  const handleInputChange = (e) => {
-    setSearchValue(e.target.value);
-  }
-  const handleSearch = (e) => {
-    e.preventDefault();
-  }
   return (
     <section className="welcome-page">
       <header>
@@ -35,35 +31,21 @@ export const WelcomePage= () => {
           alt="rick"
         />
         <div className="home">
-      <Jumbotron fluid>
-        <Container fluid>
-          <h1>"What up my Glip Glops?!"</h1>
-        </Container>
-      </Jumbotron>
-      </div>
+          <Jumbotron fluid>
+            <Container fluid>
+              <h1>"What up my Glip Glops?!"</h1>
+            </Container>
+          </Jumbotron>
+        </div>
 
     <div className="search">
-    <InputGroup>
-        <InputGroupAddon addonType="prepend">
-          <Input 
-          type="text" 
-          placeholder="Character Name"
-          value={searchValue}
-          onChange={handleInputChange}/>
-          <Button 
-          type="submit" 
-          onClick={handleSearch}
-          >
-            Search
-          </Button>
-        </InputGroupAddon>
-      </InputGroup>
+      <SearchForm characters={characters} />
     </div>
 
         <Link to="/characters">Here's Everybody</Link>
         <Link to="/locations">All the Places</Link>
 
-        <Route path="/characters" render={() => <CharactersList />}/> 
+        <Route path="/characters" render={() => <CharactersList characters={characters} />}/> 
         <Route path="/locations" render={() => <LocationsList />}/> 
 
       </header>
