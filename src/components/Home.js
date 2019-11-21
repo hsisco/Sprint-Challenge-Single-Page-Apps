@@ -62,8 +62,8 @@ const Home = () => {
       </Jumbotron>
 
       <Route path="/search" render={() => <SearchForm characters={characters}/>} />
-      <Route path="/characters" render={() => <CharactersPage characters={characters}/>} />
-      <Route path="/locations" render={() => <LocationsPage locations={locations}/>} />
+      <Route path="/characters" render={() => <CharactersList characters={characters}/>} />
+      <Route path="/locations" render={() => <LocationsList locations={locations}/>} />
     </div>
   );
 };
