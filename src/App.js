@@ -1,8 +1,7 @@
 import React from "react";
 import { Route } from 'react-router-dom';
 import {Header} from "./components/Header.js";
-import {WelcomePage} from './components/WelcomePage';
-
+import WelcomePage from './components/WelcomePage.js';
 
 export function App() {
   return (

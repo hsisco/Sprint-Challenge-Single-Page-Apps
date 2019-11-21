@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Link } from 'react-router-dom';
-import axios from 'axios';
-import { Jumbotron, Container, Button, InputGroup, InputGroupAddon, Input } from 'reactstrap';
-import {SearchForm} from './SearchForm';
+import { Jumbotron, Container } from 'reactstrap';
 import CharactersList from './CharactersList';
 import LocationsList from './LocationsList';
 
-export const WelcomePage = () => {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect (() => {
-    axios
-    .get('https://rickandmortyapi.com/api/character/')
-    .then(response => {
-      console.log(response.data.results)
-      setCharacters(response.data.results);
-    })
-    .catch(error => {
-      console.log("Character data was not returned. Sad.", error);
-    });
-  }, []);
-
+export default function WelcomePage() {
   return (
     <section className="welcome-page">
       <header>
@@ -38,14 +22,10 @@ export const WelcomePage = () => {
           </Jumbotron>
         </div>
 
-    <div className="search">
-      <SearchForm characters={characters} />
-    </div>
-
         <Link to="/characters">Here's Everybody</Link>
         <Link to="/locations">All the Places</Link>
 
-        <Route path="/characters" render={() => <CharactersList characters={characters} />}/> 
+        <Route path="/characters" render={() => <CharactersList />}/> 
         <Route path="/locations" render={() => <LocationsList />}/> 
 
       </header>

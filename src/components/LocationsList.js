@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';import LocationCard from './LocationCard';
+import axios from 'axios';
+import LocationCard from './LocationCard';
 
 function LocationsList(props) {
   const [locations, setLocations] = useState([]);
