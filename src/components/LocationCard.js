@@ -1,19 +1,16 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
-
 function LocationCard(props) {
-  const { name, type, dimension, created } = props;
-
   return(
     <div>
     <Card>
       <CardBody>
-        <CardTitle>{name}</CardTitle>
-        <CardText>Dimension: {dimension}.</CardText>
-        <CardText>Type: {type}.</CardText>
+        <CardTitle>{props.name}</CardTitle>
+        <CardText>Dimension: {props.dimension}.</CardText>
+        <CardText>Type: {props.type}.</CardText>
         <CardText>
-          <small className="text-muted">Created: {created}</small>
+          <small className="text-muted">Created: {props.created}</small>
         </CardText>
       </CardBody>
     </Card>
